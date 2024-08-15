@@ -1,0 +1,263 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    background-color: #222;
+}
+
+.card {
+    width: 90%;
+    max-width: 470px;
+    background: linear-gradient(135deg, #ffe79f, #fffa9d);
+    color: #fff;
+    margin: 100px auto 100px;
+    border-radius: 20px;
+    padding: 40px 35px 0px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 600px; /* Adjust as needed to ensure footer is pushed down */
+}
+
+.search {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search input {
+    border: 0;
+    outline: 0;
+    background: #ebfffc;
+    color: #555;
+    padding: 10px 25px;
+    height: 60px;
+    border-radius: 30px;
+    flex: 1;
+    margin-right: 16px;
+    font-size: 18px;
+}
+
+.search button {
+    border: 0;
+    outline: 0;
+    background: #ebfffc;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.search button img {
+    width: 16px;
+}
+
+.city, .weather-info {
+    font-family: Georgia;
+}
+
+.weather-icon {
+    width: 170px;
+    margin-top: -40px;
+}
+
+.weather-state, .temp {
+    font-size: 10px;
+    font-weight: 500;
+    color: #3E1E08;
+    margin: 0;
+}
+
+.weather-state {
+    margin-right: 10px;
+}
+
+.weather h1, .weather p {
+    font-size: 40px;
+    font-weight: 500;
+    color: #3E1E08;
+    margin: 0;
+}
+
+.weather h2 {
+    font-size: 35px;
+    font-weight: 400;
+    margin-top: 40px;
+    color: #3E1E08;
+}
+
+.weather {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.weather-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.extra-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.row2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.sunrise, .sunset, .uvindex {
+    background-color: #FBE08D;
+    border-radius: 10px;
+    color: #3E1E08;
+    text-align: left;
+    padding: 10px 20px;
+    flex: 1;
+    margin: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+.nextreminder {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: auto auto;
+    gap: 10px;
+    background-color: #FFEA60;
+    border-radius: 10px;
+    border: 1px solid #3E1E08;
+    color: #3E1E08;
+    padding: 10px 20px;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+.reminder-content {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    column-gap: 230px;
+}
+
+.reminder-content p {
+    margin: 0;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.reminder {
+    background-color: #FFEA60;
+    border-radius: 10px;
+    color: #3E1E08;
+    text-align: left;
+    padding: 10px 12px;
+    width: 190px;
+    border: 3px solid #3E1E08;
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+.uvindexicon, .sunriseicon, .sunseticon {
+    max-width: 20%;
+    margin-bottom: 10px;
+}
+
+.remindericon {
+    width: 50%;
+    margin-left: 25px;
+}
+
+.uvindex p, .sunrise p, .sunset p {
+    margin: 0;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.nextremindertext {
+    margin: 0;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.plus {
+    font-size: 50px;
+}
+
+.pencil {
+    width: 30px; 
+    opacity: 50%;
+}
+
+.nexttime {
+    grid-column: 1 / 3; 
+    margin-top: 10px; 
+    font-size: 70px; 
+    font-weight: bolder;
+    color: #3E1E08; 
+}
+
+.error {
+    display: none; 
+    color: #3E1E08; 
+    margin-top: 20px; 
+}
+
+nav {
+    margin-top: 35px;
+    text-align: center;
+    margin-bottom: 35px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    border-radius: 50px;
+}
+
+ul {
+    background-color: #ebfffc;
+    padding: 1em;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    border-radius: 50px;
+}
+
+li {
+    display: inline;
+}
+
+li a {
+    text-decoration: none;
+    padding: 10px;
+}
+
+.nav-icon {
+    width: 50px;
+}

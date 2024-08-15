@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="homepage.css">
+</head>
+<body>
+    <div class="card">
+        <div class="search">
+            <input type="text" placeholder="Enter city name" spellcheck="false">
+            <button><img src="images/search.png"></button>
+        </div>
+        <div class="error">
+            <p>Invalid city name</p>
+        </div>
+        <div class="weather">
+            <h2 class="city">New York</h2>
+            <img src="images/rain.png" class="weather-icon">
+            <div class="weather-info">
+                <p class="weather-state" style="font-size: 30px;">Rain</p>
+                <h1 class="temp" style="font-size: 30px;">22°F</h1>
+            </div>
+            <div class="extra-info">
+                <div class="row">
+                   
+                    <div class="sunrise">
+                        <img src="images/sunrise icon.png" class="sunriseicon">
+                        <p>Sunrise</p>
+                        <p>5:30 AM</p>
+                    </div>
+                    <div class="sunset">
+                        <img src="images/sunset icon.png" class="sunseticon">
+                        <p>Sunset</p>
+                        <p>8:30 PM</p>
+                    </div>
+                </div>
+                <div class="row2">
+                    
+                    <div class="uvindex">
+                        <img src="images/uv index icon.png" class="uvindexicon">
+                        <div class="uvindex-text">
+                            <p>UV Index</p>
+                            <p>8</p>
+                        </div>
+                    </div>
+                    <button class="reminder">
+                        <img src="images/remindericon.png" class="remindericon">
+                        <p class="plus">+</p>
+                    </button> 
+                </div>
+
+            </div>
+            <div class="nextreminder">
+                <div class="reminder-content">
+                    <p class="nextremindertext">Next Reminder:</p>
+                    <a class="editreminder" href="reminder.html">
+                        <img src="images/pencil.png" class="pencil">
+                    </a>
+                </div>
+                <p class="nexttime">02:20:00</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+            <li><a href="homepage.html" class="nav-icon">
+                <img src="images/homeicon.png" class="nav-icon">
+            </a></li>
+            <li><a href="learn.html" class="learn">
+                <img src="images/learnicon.png" class="nav-icon">
+            </a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <script>
+        const apiKey = "c461a73c9bf856d74c386463be7e530c";
+        const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=imperial&q=";
+
+        const searchBox = document.querySelector(".search input")
+        const searchBtn = document.querySelector(".search button")
+        const weatherIcon = document.querySelector(".weather-icon");
+
+        async function checkWeather(city){
+            const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+
+            if(response.status == 404){
+                document.querySelector(".error").style.display = "block";
+                document.querySelector(".weather").style.display = "none";
+            }else{
+                var data = await response.json();
+
+                document.querySelector(".city").innerHTML = data.name;
+                document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°F";
+
+                if(data.weather[0].main == "Clouds"){
+                    weatherIcon.src = "images/clouds.png";
+                }
+                else if(data.weather[0].main == "Clear"){
+                    weatherIcon.src = "images/clear.png";
+                }
+                else if(data.weather[0].main == "Rain"){
+                    weatherIcon.src = "images/rain.png";
+                }
+                else if(data.weather[0].main == "Drizzle"){
+                    weatherIcon.src = "images/drizzle.png";
+                }
+                else if(data.weather[0].main == "Mist"){
+                    weatherIcon.src = "images/mist.png";
+                }
+
+                document.querySelector(".weather").style.display = "block";
+                document.querySelector(".error").style.display = "none";
+            }
+        }
+
+        searchBtn.addEventListener("click", ()=>{
+            checkWeather(searchBox.value);
+        });
+
+        searchBox.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                checkWeather(searchBox.value);
+            }
+        })
+
+        checkWeather("New York");
+    </script>
+</body>
+</html>
